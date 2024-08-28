@@ -41,6 +41,9 @@ module "addons" {
 
 module "ingress_nginx" {
   source = "./modules/ingress-nginx"
+  owner        = var.owner
+  bootcamp     = var.bootcamp
+  expiration_date = var.expiration_date
   depends_on = [module.compute]
   providers = {
     kubernetes = kubernetes
