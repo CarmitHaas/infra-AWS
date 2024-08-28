@@ -6,6 +6,7 @@ variable "cluster_name" {
 variable "argocd_version" {
   description = "Version of ArgoCD Helm chart to install"
   type        = string
+  default     = "5.46.7"
 }
 
 variable "argocd_namespace" {
