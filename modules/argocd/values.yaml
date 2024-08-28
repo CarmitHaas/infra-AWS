@@ -1,0 +1,33 @@
+server:
+  extraArgs:
+    - --insecure
+    - --basehref=/argocd
+    - --rootpath=/argocd
+  config:
+    url: https://carmit-crm.zapto.org/argocd
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - carmit-crm.zapto.org
+    paths:
+      - /argocd
+    pathType: Prefix
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    tls:
+      - hosts:
+          - carmit-crm.zapto.org
+        # secretName: argocd-server-tls
+
+ 
+global:
+  domain: carmit-crm.zapto.org
+
+configs:
+  secret:
+    argocdServerAdminPassword: "$2b$12$ZoknWbtw91m/4uSBkmO7F.PHTeDDP95Ev/se8RRm3Fn3DDnwO/Tui"

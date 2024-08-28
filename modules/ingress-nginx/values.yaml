@@ -1,0 +1,7 @@
+controller:
+  extraArgs:
+    enable-ssl-passthrough: ""
+  config:
+    use-forwarded-headers: "true"
+  addHeaders:
+    X-Forwarded-Proto: https
